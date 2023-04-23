@@ -1,0 +1,26 @@
+
+.------------------------.
+| Parameters of this run |
+.------------------------.
+Coordinate system: SinhSpherical
+Initial condition information:
+phi_{0}    = 3.330000000000000e-01
+r_{0}      = 0.00
+delta      = 1.00
+
+Radial grid information:
+N_{r}      = 321
+r_{max}    = 16
+dr_{min}   = 3.36926e-03
+sinhA      = 16.00
+sinhW      = 0.20000
+Points in 0<r<1: 144
+Points in 0<r<5: 246
+
+Time evolution information:
+N_{t}      = 20776
+t_{final}  = 35.00
+dt         = 1.685e-03
+CFL factor = 0.50
+Cosmological constant = -5.000
+
