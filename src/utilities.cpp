@@ -254,8 +254,9 @@ void utilities::regrid( grid::parameters &grid, gridfunction &phi, gridfunction 
     alpha.level_n[j] = evolution::pointwise_solution_of_the_polar_slicing_condition( j, grid, a.level_n, alpha.level_n );
   }
   /* Step 3.d: Now rescale alpha */
-  evolution::rescaling_of_the_lapse(grid,a.level_n,alpha.level_n);
-  
+  #if(LAPSE_RESCALING ==1)
+    evolution::rescaling_of_the_lapse(grid,a.level_n,alpha.level_n);
+  #endif
   /* .-------------------------.
    * | Step 4: Update the time |
    * .-------------------------.
@@ -299,8 +300,9 @@ void utilities::regrid( grid::parameters &grid, gridfunction &phi, gridfunction 
     alpha.level_np1[j] = evolution::pointwise_solution_of_the_polar_slicing_condition( j, grid, a.level_np1, alpha.level_np1 );
   }
   /* Step 3.d: Now rescale alpha */
-  evolution::rescaling_of_the_lapse(grid,a.level_np1,alpha.level_np1);
-
+  #if (LAPSE_RESCALING == 1 )
+    evolution::rescaling_of_the_lapse(grid,a.level_np1,alpha.level_np1);
+  #endif
   /* .-------------------------.
    * | Step 4: Update the time |
    * .-------------------------.

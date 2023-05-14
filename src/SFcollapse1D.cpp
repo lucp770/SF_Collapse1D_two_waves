@@ -136,8 +136,11 @@ int main( int argc, char *argv[] ) {
     /* Step 3.b: Compute alpha */
     alpha.level_n[j] = evolution::pointwise_solution_of_the_polar_slicing_condition( j, grid, a.level_n, alpha.level_n );
   }
+
+  #if (LAPSE_RESCALING == 1)
   /* Step 3.d: Now rescale alpha */
-  evolution::rescaling_of_the_lapse(grid,a.level_n,alpha.level_n);
+    evolution::rescaling_of_the_lapse(grid,a.level_n,alpha.level_n);
+  #endif
   
   /* .-------------------------.
    * | Step 4: Update the time |
@@ -181,8 +184,11 @@ int main( int argc, char *argv[] ) {
     /* Step 3.b: Compute alpha */
     alpha.level_np1[j] = evolution::pointwise_solution_of_the_polar_slicing_condition( j, grid, a.level_np1, alpha.level_np1 );
   }
+
+  #if (LAPSE_RESCALING == 1 )
   /* Step 3.d: Now rescale alpha */
-  evolution::rescaling_of_the_lapse(grid,a.level_np1,alpha.level_np1);
+    evolution::rescaling_of_the_lapse(grid,a.level_np1,alpha.level_np1);
+  #endif
 
   /* .-------------------------.
    * | Step 4: Update the time |
@@ -264,8 +270,10 @@ int main( int argc, char *argv[] ) {
       alpha.level_np1[j] = evolution::pointwise_solution_of_the_polar_slicing_condition( j, grid, a.level_np1, alpha.level_np1 );
     }
     /* Step 3.d: Now rescale alpha */
-    evolution::rescaling_of_the_lapse(grid,a.level_np1,alpha.level_np1);
 
+    #if (LAPSE_RESCALING ==1)
+      evolution::rescaling_of_the_lapse(grid,a.level_np1,alpha.level_np1);
+    #endif
     /* .-------------------------.
      * | Step 4: Update the time |
      * .-------------------------.
@@ -296,6 +304,8 @@ int main( int argc, char *argv[] ) {
       max_central_density = central_density;
     }
 
+  #if (LAPSE_RESCALING ==1)
+
     /* Check whether or not the lapse function has collapsed */
     if( utilities::check_for_collapse_of_the_lapse( grid, alpha ) ) {
       cout << "\n(SFcollapse1D INFO) The lapse function has collapsed!\n";
@@ -304,6 +314,8 @@ int main( int argc, char *argv[] ) {
       lapse_collapsed = true;
       break;
     }
+
+  #endif
 
     /* Print information to the user */
     if( n%OUTPUT_CHECKPOINT == 0 ) {//ou seja se output_checkpoint == multiplo de n, OUTPUT_CHECKPOINT é um macro que vale 100

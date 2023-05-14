@@ -159,8 +159,9 @@ void evolution::initial_condition( grid::parameters grid, gridfunction &phi, gri
   }
 
   /* Now rescale alpha */
-  evolution::rescaling_of_the_lapse(grid,a.level_nm1,alpha.level_nm1);
-
+  #if (LAPSE_RESCALING == 1 )
+    evolution::rescaling_of_the_lapse(grid,a.level_nm1,alpha.level_nm1);
+  #endif
 }
 
 /* Function to step phi, Phi, and Pi forward in time */
