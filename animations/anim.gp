@@ -65,8 +65,8 @@ unset key
 set xlabel "r"
 set ylabel label
 
-last_file_number  = 199
-output_multiplier = 1
+last_file_number  = 5900
+output_multiplier = 100
 number_of_files   = last_file_number/output_multiplier
 dt                = 1.685e-03
 do for[i=0:number_of_files] {
