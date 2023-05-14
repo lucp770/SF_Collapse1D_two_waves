@@ -49,7 +49,7 @@ This should produce the following `.gif` animation:
 
 To run a simple example, which will ensure that the code has compiled properly, type
 
-`$: ./SFcollapse1D 200 10 10 0.2 0.3`
+`$: ./SFcollapse1D 200 10 10 0.2 0.5`
 
 The entire run should take less than 10 seconds. If you have `gnuplot` installed *and* the `gif` terminal, go to the `animations/` directory and type
 
@@ -62,15 +62,15 @@ This should produce the following `.gif` animation:
 
 # Adding a Cosmological constant
 
-The original version created by Leonardo Werneck can only solve the equations in an assintoptic flat space-time for a massless scalar field. This new version allows for the inclusion of a cosmological constant (positive or negative) that creates the possibility for solving the equations of evolution of a massless scalarfield in a assimptotic dS(https://en.wikipedia.org/wiki/De_Sitter_space) or adS spacetime(https://en.wikipedia.org/wiki/Anti-de_Sitter_space). To configure the value of the cosmological constant is only necessary to change the value of the variable: 
+The original version created by Leonardo Werneck can only solve the equations in an assintoptic flat space-time for a massless scalar field. TThis new version allows for the inclusion of a cosmological constant (positive or negative) that creates the possibility for solving the equations of evolution of a massless scalar field in an asymptotic [dS](https://en.wikipedia.org/wiki/De_Sitter_space) or [adS spacetime](https://en.wikipedia.org/wiki/Anti-de_Sitter_space). To configure the value of the cosmological constant is only necessary to change the value of the variable: 
 
 `#define COSMOLOGICAL_CONSTANT (0)`
 
 in the file `macros.hpp`.
 
-#Phantom fields
+# Phantom fields
 
-Is possible to analyse the behavior of phantom fields. To change the field to be evolved from a traditional scalarfield to a phantom field we can change the value of the variable `epsilon` from `(1)` to `(-1)` also in the `macros.hpp` file.
+Is possible to analyse the behavior of phantom fields. To change the field to be evolved from a traditional scalar field to a phantom field we can change the value of the variable `epsilon` from `(1)` to `(-1)` also in the `macros.hpp` file.
 
 `#define EPSILON (1)`
 
