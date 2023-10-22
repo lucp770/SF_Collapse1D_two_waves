@@ -427,8 +427,18 @@ void evolution::rescaling_of_the_lapse( grid::parameters grid, const realvec a, 
 
   DECLARE_GRID_PARAMETERS;
 
+
+
+  ofstream outpuFile;//create an instance of a file
+  
+  outpuFile.open("rescaling_values.dat",ios_base::app);
+  outpuFile.precision(15);
+
+
   /* Set the initial value of kappa */
   real kappa = a[0]/alpha[0];
+  real initial_kappa = a[0]/alpha[0];
+
 
   /* Loop over the grid, updating kappa if needed */
   LOOP(1,Nx0Total) {
@@ -437,7 +447,15 @@ void evolution::rescaling_of_the_lapse( grid::parameters grid, const realvec a, 
       kappa = kappa_new;
   }
 
+  // print to file after rescaling
+
+  outpuFile << scientific << initial_kappa << " " << kappa << endl;
+  outpuFile.close();
+
+
   /* Rescale the lapse */
   LOOP(0,Nx0Total) alpha[j] *= kappa;
+
+  
 
 }

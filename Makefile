@@ -81,7 +81,7 @@ utilities_headers = $(SRC_DIR)/grid.hpp         \
 
 all: SFcollapse1D
 
-SFcollapse1D: $(OBJECTS) Clean_previous out_dir
+SFcollapse1D: $(OBJECTS) Clean_previous out_dir remove_dat_files
 	$(CXX) $(CXXFLAGS) $(OBJ_PATHS) -o SFcollapse1D
 
 SFcollapse1D.o: $(SRC_DIR)/SFcollapse1D.cpp $(SFcollapse1D_headers) obj_dir
@@ -112,3 +112,8 @@ realclean:
 	rm -rf $(OBJ_PATHS) SFcollapse1D *.txt *.dat out/*.dat animations/*.gif doc/*.pdf out/ obj/
 Clean_previous:
 	rm -rf out
+remove_dat_files:
+	rm *.dat
+
+
+

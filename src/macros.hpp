@@ -107,7 +107,7 @@ typedef std::vector< std::vector<double> > realmat;
 #define REGRID_INTERP_STENCIL_SIZE (3)
 
 /* Checkpoints */
-#define OUTPUT_CHECKPOINT                (100)
+#define OUTPUT_CHECKPOINT                (1)
 #define CENTRAL_VALUES_OUTPUT_CHECKPOINT (1)
 #define REGRID_CHECKER_CHECKPOINT        (100)
 #define LAPSE_COLLAPSE_CHECKPOINT        (50)
