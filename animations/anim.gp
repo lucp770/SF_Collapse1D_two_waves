@@ -38,8 +38,8 @@ if( which_var eq 'Pi' ) {
   label = "Pi(t,r)"
 }
 if( which_var eq 'a' ) {
-  ymin = 0.9999
-  ymax = 5.0
+  ymin = -0.5
+  ymax = 1.5
   label = "a(t,r)"
 }
 if( which_var eq 'alpha' ) {
@@ -65,8 +65,8 @@ unset key
 set xlabel "r"
 set ylabel label
 
-last_file_number  = 199
-output_multiplier = 2
+last_file_number  = 21
+output_multiplier = 1
 number_of_files   = last_file_number/output_multiplier
 dt                = 1.685e-03
 do for[i=0:number_of_files] {

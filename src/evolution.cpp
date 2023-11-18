@@ -439,13 +439,36 @@ void evolution::rescaling_of_the_lapse( grid::parameters grid, const realvec a, 
   real kappa = a[0]/alpha[0];
   real initial_kappa = a[0]/alpha[0];
 
+  /* -------------------A TESTAR ------------------*/
+  #if (INVERT_RESCALING == 1)
 
-  /* Loop over the grid, updating kappa if needed */
-  LOOP(1,Nx0Total) {
-    real kappa_new = a[j]/alpha[j];
-    if( kappa_new < kappa )
-      kappa = kappa_new;
-  }
+    #if(EPSILON != (-1))
+
+      cout << "Invalid configuration. Rescaling can only be inverted for phantom fields  !! " <<endl;
+      cout << "Please check the macros" << endl;
+      exit(0);
+
+    #else
+
+      cout<<"  inverted rescaling  "<<endl;
+      //normalize the rescaling inverselly
+      /* Loop over the grid, updating kappa if needed */
+      LOOP(1,Nx0Total) {
+        real kappa_new = a[j]/alpha[j];
+        if( kappa_new > kappa )
+          kappa = kappa_new;
+      }
+    #endif
+
+  #else
+    /* Loop over the grid, updating kappa if needed */
+    LOOP(1,Nx0Total) {
+      real kappa_new = a[j]/alpha[j];
+      if( kappa_new < kappa )
+        kappa = kappa_new;
+    }
+  #endif
+
 
   // print to file after rescaling
 

@@ -42,7 +42,11 @@ typedef std::vector< std::vector<double> > realmat;
 #define COSMOLOGICAL_CONSTANT (0)
 
 /*set the field type (1 for scalar, -1 for phantom)*/
-#define EPSILON (1)
+#define EPSILON (-1)
+
+/* set to 1 for inversion of the lapse rescaling, set to 0 otherwise*/
+#define INVERT_RESCALING (0)
+
 
 /* Set cell or vertex centered grid macros */
 #define CELL_CENTERED (0)
