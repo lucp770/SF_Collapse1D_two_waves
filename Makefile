@@ -113,7 +113,7 @@ realclean:
 Clean_previous:
 	rm -rf out
 remove_dat_files:
-	rm *.dat
+	rm -f *.dat
 
 
 

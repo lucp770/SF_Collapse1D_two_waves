@@ -32,15 +32,13 @@
 using namespace std;
 
 /* Function to set the initial condition for all gridfunctions: phi, Phi, Pi, a, and alpha */
-void evolution::initial_condition( grid::parameters grid, gridfunction &phi, gridfunction &Phi, gridfunction &Pi, gridfunction &a, gridfunction &alpha ) {
+void evolution::initial_condition( grid::parameters grid, gridfunction &phi, gridfunction &Phi, gridfunction &Pi, gridfunction &a, gridfunction &alpha, real &phi0_2, real &position_2 ) {
 
 
   DECLARE_GRID_PARAMETERS;
 
   LOOP(0,Nx0Total) {
-//aqui provavelmente entraria o código. mas ele precisa avaliar mais do que somente o grid.
-    //initial_condition
-    
+
 #if( INITIAL_CONDITION == GAUSSIAN_SHELL )
 
     /* .----------------------------------------------.
@@ -54,8 +52,13 @@ void evolution::initial_condition( grid::parameters grid, gridfunction &phi, gri
     const real expfactor = (r-R0)*factor;
     const real exp_rmr0_over_deltasqrd = exp(-expfactor);
 
+    // configure the second wave
+    const real wave2_factor = (r-position_2)/SQR(DELTA2);
+    const real wave2_expfactor = (r-position_2)*wave2_factor;
+    const real wave2_exp_rmr0_over_deltasqrd = exp(-wave2_expfactor);
+
     /* Set the initial condition for phi */
-    phi.level_nm1[j] = phi0*exp_rmr0_over_deltasqrd;
+    phi.level_nm1[j] = phi0*exp_rmr0_over_deltasqrd + phi0_2*wave2_exp_rmr0_over_deltasqrd;
 
 #elif( INITIAL_CONDITION == GAUSSIAN_SHELL_V2 )
 

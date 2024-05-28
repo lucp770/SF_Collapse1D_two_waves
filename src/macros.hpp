@@ -42,7 +42,7 @@ typedef std::vector< std::vector<double> > realmat;
 #define COSMOLOGICAL_CONSTANT (0)
 
 /*set the field type (1 for scalar, -1 for phantom)*/
-#define EPSILON (-1)
+#define EPSILON (1)
 
 /* set to 1 for inversion of the lapse rescaling, set to 0 otherwise*/
 #define INVERT_RESCALING (0)
@@ -83,8 +83,9 @@ typedef std::vector< std::vector<double> > realmat;
 #define NGHOSTS0 NGHOSTS
 
 /* Scalar field collapse parameters */
-#define R0    (0.0)
-#define DELTA (1.0)
+#define R0    (0.0)//posicao da primeira onda
+#define DELTA (1.0)//desvio padrao da primeira gaussiana
+#define DELTA2 (1.0)//desvio padrao da segunda gaussiana
 #define R0_1  (5.0)
 #define R0_2  (10.0)
 

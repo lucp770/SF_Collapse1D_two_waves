@@ -38,14 +38,36 @@ int main( int argc, char *argv[] ) {
 
   /* Print logo to the user */
 #include "logo.hpp"
+ cout<< "argumentos"<< endl;
+ cout<< argc << endl;
 
   /* Check correct usage */
 #if( COORD_SYSTEM == SPHERICAL )
   if( argc != 5 ) utilities::SFcollapse1D_error(SPHERICAL_USAGE_ERROR);
 #elif( COORD_SYSTEM == SINH_SPHERICAL )
-  if( argc != 6 ) utilities::SFcollapse1D_error(SINH_SPHERICAL_USAGE_ERROR);
+  if( argc != 6 && argc != 8 ) utilities::SFcollapse1D_error(SINH_SPHERICAL_USAGE_ERROR);
 #endif
 
+  real phi0_2;
+  real position_2;
+
+  // if there is seven arguments, update values of the second wave.
+  cout << "variaveis declaradas" << endl;
+
+  if(argc == 8){
+    position_2 = atof(argv[6]);
+    phi0_2 = atof(argv[7]);
+  }else{
+    phi0_2 = 0.0;
+    position_2 = 0.0;
+  }
+  cout << "valores atribuidos" << endl;
+
+  cout << "phi0: " + to_string(phi0_2) << endl;
+  cout << "position_2: " + to_string(position_2) << endl;
+
+
+  
   /* Start the timer */
   auto start_time = std::chrono::high_resolution_clock::now();
 
@@ -59,7 +81,8 @@ int main( int argc, char *argv[] ) {
   gridfunction phi(grid.Nx0Total), Phi(grid.Nx0Total), Pi(grid.Nx0Total), a(grid.Nx0Total), alpha(grid.Nx0Total);
 
   /* Set the initial condition */
-  evolution::initial_condition( grid, phi, Phi, Pi, a, alpha );
+  evolution::initial_condition( grid, phi, Phi, Pi, a, alpha, phi0_2, position_2);
+
 
   // Estimate ADM mass for BSSN computation
   // real M_ADM = 0.0;

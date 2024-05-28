@@ -58,15 +58,15 @@ if( which_var eq 'mass' ) {
   label = "rho(t,r)"
 }
 
-set xrange [0.0:5.0]
+set xrange [0.0:8.0]
 set yrange [ymin:ymax]
 set grid
 unset key
 set xlabel "r"
 set ylabel label
 
-last_file_number  = 21
-output_multiplier = 1
+last_file_number  = 3685
+output_multiplier = 50
 number_of_files   = last_file_number/output_multiplier
 dt                = 1.685e-03
 do for[i=0:number_of_files] {
