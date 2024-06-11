@@ -38,8 +38,6 @@ int main( int argc, char *argv[] ) {
 
   /* Print logo to the user */
 #include "logo.hpp"
- cout<< "argumentos"<< endl;
- cout<< argc << endl;
 
   /* Check correct usage */
 #if( COORD_SYSTEM == SPHERICAL )
@@ -52,7 +50,7 @@ int main( int argc, char *argv[] ) {
   real position_2;
 
   // if there is seven arguments, update values of the second wave.
-  cout << "variaveis declaradas" << endl;
+  // cout << "variaveis declaradas" << endl;
 
   if(argc == 8){
     position_2 = atof(argv[6]);
@@ -61,10 +59,10 @@ int main( int argc, char *argv[] ) {
     phi0_2 = 0.0;
     position_2 = 0.0;
   }
-  cout << "valores atribuidos" << endl;
+  // cout << "valores atribuidos" << endl;
 
-  cout << "phi0: " + to_string(phi0_2) << endl;
-  cout << "position_2: " + to_string(position_2) << endl;
+  // cout << "phi0: " + to_string(phi0_2) << endl;
+  // cout << "position_2: " + to_string(position_2) << endl;
 
 
   
@@ -73,6 +71,13 @@ int main( int argc, char *argv[] ) {
 
   /* Construct the base grid */
   grid::parameters grid(argv);
+
+  if(argc == 8){
+   cout << "Dois picos especificados" << endl;
+   cout << "Posicao pico 2 : " << to_string(position_2)<< endl;
+   cout << "Amplitudo pico 2 : " << to_string(phi0_2) << endl;
+   cout << "largura do pico 2: " << to_string(DELTA2) << endl;
+  }
   
   /* Print information about the run to the user */
   utilities::parameter_information(grid);

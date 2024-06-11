@@ -123,7 +123,8 @@ void evolution::initial_condition( grid::parameters grid, gridfunction &phi, gri
 
 #if( INITIAL_CONDITION == GAUSSIAN_SHELL )
       /* Set the initial condition for Phi */
-      Phi.level_nm1[j] = -2.0*factor*phi0*exp_rmr0_over_deltasqrd;
+      // TODO: Mudar a condição para contemplar a segunda onda.
+      Phi.level_nm1[j] = -2.0*factor*phi0*exp_rmr0_over_deltasqrd -2.0*wave2_factor*phi0_2*wave2_exp_rmr0_over_deltasqrd;
 #elif( INITIAL_CONDITION == GAUSSIAN_SHELL_V2 )
       /* Set the initial condition for Phi */
       Phi.level_nm1[j] = 2.0*phi0*r*exp_rmr0_over_deltasqrd*( delta_sqrd - r*(r-R0) )/delta_sqrd;

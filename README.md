@@ -43,7 +43,7 @@ The entire run should take less than 10 seconds. If you have `gnuplot` installed
 
 This should produce the following `.gif` animation:
 
-![SFcollapse1D output: scalar field in the weak field regime](animations/scalarfield_weak_eg.gif "SFcollapse1D output: scalar field in the weak field regime")
+![SFcollapse1D output: scalar field in the weak field regime](examples/scalarfield_weak_eg.gif "SFcollapse1D output: scalar field in the weak field regime")
 
 # Running an example in the Strong field regime
 
@@ -57,21 +57,23 @@ The entire run should take less than 10 seconds. If you have `gnuplot` installed
 
 This should produce the following `.gif` animation:
 
-![SFcollapse1D output: scalar field in the weak field regime](animations/scalarfield_strong_eg.gif "SFcollapse1D output: scalar field in the weak field regime")
+![SFcollapse1D output: scalar field in the weak field regime](examples/scalarfield_strong_eg.gif "SFcollapse1D output: scalar field in the weak field regime")
 
 
-# Adding a Cosmological constant
+# Adding a second wave
 
-The original version created by Leonardo Werneck can only solve the equations in an assintoptic flat space-time for a massless scalar field. TThis new version allows for the inclusion of a cosmological constant (positive or negative) that creates the possibility for solving the equations of evolution of a massless scalar field in an asymptotic [dS](https://en.wikipedia.org/wiki/De_Sitter_space) or [adS spacetime](https://en.wikipedia.org/wiki/Anti-de_Sitter_space). To configure the value of the cosmological constant is only necessary to change the value of the variable: 
+To add a second scalar field , is neccessary to only to specify two more arguments in the programm execution. The arguments that should be passed to the execution are:
 
-`#define COSMOLOGICAL_CONSTANT (0)`
+`$: ./SFcollapse1D Nr r_max t_max w phi0 position1 phi0_2`
 
-in the file `macros.hpp`.
+An example of execution can be:
 
-# Phantom fields
+`$: ./SFcollapse1D 200 10 10 0.2 0.3 5 0.1`
 
-Is possible to analyse the behavior of phantom fields. To change the field to be evolved from a traditional scalar field to a phantom field we can change the value of the variable `epsilon` from `(1)` to `(-1)` also in the `macros.hpp` file.
+resulting in the following scalarfield evolution
 
-`#define EPSILON (1)`
+![SFcollapse1D output: scalar ](examples/dual_waves.gif "SFcollapse1D output: Two scalar fields")
 
+# Changing the standard deviation of the secondary wave
 
+By default the second gaussian field that can be added have a standard deviation of 1.0. This can be changed by altering in the macros.hpp the value of DELTA2. Remember that is necessary to recompile the code again (make command) to apply the changes.
